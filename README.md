@@ -19,3 +19,31 @@ if needed, provide additional installation instructions, but there shouldn't be 
 use best practices all around. For PHP, good source of that would be http://www.phptherightway.com
 
 Important: Do not take this task lightly. You will be judged according to the quality, completion and perfection of the task.
+
+## Requirements
+
+- [Go](https://golang.org/)
+
+## Usage 
+
+Navigate to %GOPATH/src
+```
+git clone https://github.com/mali8/msisdn.git
+cd msisdn
+go get
+go install
+msisdn
+```
+Go to: localhost:8080
+Api call example: localhost:8080/parse?phoneNumber=%2B38640579602
+
+## Tests
+
+Navigate to %GOPATH/src/msisdn
+```
+go test
+```
+
+Author: Nejc Belšak
+
+E-mail: belsak@gmail.com
