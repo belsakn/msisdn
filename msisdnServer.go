@@ -34,6 +34,19 @@ const indexBody = `
 </html>
 `
 
+type errorResponse struct {
+	Message string `json:"message"`
+	Error   string `json:"error"`
+}
+
+type successResponse struct {
+	NationalNumber    uint64 `json:"national_number"`
+	CountryCode       int32  `json:"country_code"`
+	NationalFormatted string `json:"national_formatted"`
+	CarrierForNumber  string `json:"carrier_for_number"`
+	CountryCodeName   string `json:"country_code_name"`
+}
+
 func index(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(indexBody))
