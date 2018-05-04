@@ -52,11 +52,10 @@ type errorResponse struct {
 }
 
 type successResponse struct {
-	NationalNumber    uint64 `json:"national_number"`
+	MnoIdentifier     string `json:"mno_identifier"`
 	CountryCode       int32  `json:"country_code"`
-	NationalFormatted string `json:"national_formatted"`
-	CarrierForNumber  string `json:"carrier_for_number"`
-	CountryCodeName   string `json:"country_code_name"`
+	SubscriberNumber  string `json:"subscriber_number"`
+	CountryIdentifier string `json:"country_identifier"`
 }
 
 func writeResponse(w http.ResponseWriter, status int, body interface{}) {
@@ -98,11 +97,10 @@ func getResponse(phoneNumber string) (int, interface{}) {
 	}
 
 	return http.StatusOK, successResponse{
-		NationalNumber:    *phoneNumberMetadata.NationalNumber,
+		MnoIdentifier:     carrier,
 		CountryCode:       *phoneNumberMetadata.CountryCode,
-		NationalFormatted: phonenumbers.Format(phoneNumberMetadata, phonenumbers.NATIONAL),
-		CarrierForNumber:  carrier,
-		CountryCodeName:   phonenumbers.GetRegionCodeForNumber(phoneNumberMetadata),
+		SubscriberNumber:  phonenumbers.Format(phoneNumberMetadata, phonenumbers.NATIONAL),
+		CountryIdentifier: phonenumbers.GetRegionCodeForNumber(phoneNumberMetadata),
 	}
 
 }
